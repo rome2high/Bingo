@@ -131,11 +131,15 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	public  String toString() {
     	return ("");
     }
-	
+
 	//Code Unit 15: in this code unit, you are going to
 	//supply the source code for the equals method that is inside the ArraySet class.
 	//Return True if the current set contains exactly the same elements as the set passed as a parameter
-	
+	//@Override
+	public boolean equals(SetADT<T> set) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	
