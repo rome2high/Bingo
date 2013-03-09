@@ -93,7 +93,6 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 		return (T[]) contents;
 	}
 	
-	
 	public T remove(T target) throws EmptyCollectionException, NoSuchElementException{
 		//The remove operation removes the specified element from the set and returns it.
 		//This method will throw an EmptyCollectionException if the set is empty
@@ -115,7 +114,6 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 		return target;
 	}
 	
-	
 	public int size() {
 		//Code Unit 11: size method returns an integer that indicating the
 		//number of actual elements in the array. This is a simple method.
@@ -130,35 +128,30 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 		return (count <= 0);
 	}
 	
-	//Code Unit 13: in this code unit, you are going to supply two pieces of code:
-	//iterator method that is inside the ArraySet class and the external class ArrayIterator.
 	public Iterator<T>  iterator() {
-		//ArraySet<BingoBall> bingoSet = new ArraySet<BingoBall>();
-		ArraySet<T> arSet = new ArraySet<T>();
-		
-		for (int i = 0; i < count; i++) {
-			arSet.add(contents[i]);
-		}
-		
-		return(new ArrayIterator<T>(arSet));
+		//Code Unit 13: in this code unit, you are going to supply two pieces of code:
+		//iterator method that is inside the ArraySet class and the external class ArrayIterator.
+		//COMPLETED
+		return(new ArrayIterator<T>(this));
 	}
 
-	//print all the element in the object
-	//behave like bingoball objects
-	//retrun B 1, B 2, B 30,...
-	//using any loop but recommend iterator-while loop
 	public  String toString() {
-		System.out.println("The toString Method");
-		String oStr = "";
-		T[] balls = getContents();// new ArrayList<BingoBall>();
+		//print all the element in the object
+		//behave like bingoball objects
+		//retrun B 1, B 2, B 30,...
+		//using any loop but recommend iterator-while loop
+		//COMPLETED
+		BingoBall ball;
+		String output = "";
 		
-		for (int i = 0; i< count;  i++){
-			
-			System.out.print(contents[i]);
-			
+		Iterator<T> bingoSet = this.iterator();
+		
+		while(bingoSet.hasNext()){
+			ball = (BingoBall) bingoSet.next();
+			output += ball.getLetter() + " " + ball.getNumber() + ", ";
 		}
 
-    	return (oStr);
+    	return (output);
     }
 
 	//Code Unit 15: in this code unit, you are going to
@@ -166,7 +159,26 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	//Return True if the current set contains exactly the same elements as the set passed as a parameter
 	//@Override
 	public boolean equals(SetADT<T> set) {
-		// TODO Auto-generated method stub
+		System.out.println("Testing for equals");
+		T t;
+		//compare size
+		if(set.size() != count)
+			return false;
+		
+		//create copy of each set
+		//ArraySet<T> s1 = (ArrayIterator<T>) this.iterator();
+		ArrayIterator<T> s2 =  (ArrayIterator<T>) set.iterator();
+			//use iterator to step through elements
+		while(s2.hasNext())
+		{
+			System.out.println("S1 LOOP");
+			if(this.contains(t = s2.next()))
+			{
+				//s1.remove();
+				s2.remove();
+			}
+		}
+				//use contains() to confirm
 		return false;
 	}
 	
