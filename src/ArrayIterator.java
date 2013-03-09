@@ -9,6 +9,7 @@ public class ArrayIterator <T> implements Iterator<T>{
 	private T[] items;
 	
 	public ArrayIterator(ArraySet<T>  arraySet) {
+		System.out.println("ArrayIterator");
 	}
 	public boolean hasNext() {
 		return false;

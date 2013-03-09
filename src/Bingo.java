@@ -1,31 +1,6 @@
 
 //application driver for code unit 13, test for the iterator method and for the ArrayIterator class.
 //======================================================
-//public class  Bingo {
-//
-//	public  static void  main(String[] args) {
-//		final  int NUM_BALLS = 4;
-//		ArraySet<BingoBall> bingoSet = new ArraySet<BingoBall>();
-//		BingoBall ball;
-//		System.out.println("Four Bingo balls have been added.");
-//		
-//		for(int num=1; num <= NUM_BALLS; num++) { 
-//			ball = new BingoBall(num);
-//			bingoSet.add(ball);
-//		}
-//
-//		ArrayIterator<BingoBall>  scan = (ArrayIterator<BingoBall>)bingoSet.iterator();
-//		
-//		while(scan.hasNext())
-//			System.out.println(scan.next());
-//		
-//		System.out.println("Done!");
-//	}
-//}
-
-//application driver for code unit 14, test for the toString method.
-//======================================================
-
 public class  Bingo {
 
 	public  static void  main(String[] args) {
@@ -36,14 +11,38 @@ public class  Bingo {
 		
 		for(int num=1; num <= NUM_BALLS; num++) { 
 			ball = new BingoBall(num);
-			System.out.println(ball);
 			bingoSet.add(ball);
 		}
 
-		System.out.println(bingoSet);
+		ArrayIterator<BingoBall>  scan = (ArrayIterator<BingoBall>)bingoSet.iterator();
+		
+		while(scan.hasNext())
+			System.out.println(scan.next());
+		
 		System.out.println("Done!");
 	}
 }
+
+//application driver for code unit 14, test for the toString method.
+//======================================================
+//public class  Bingo {
+//
+//	public  static void  main(String[] args) {
+//		final  int NUM_BALLS = 4;
+//		ArraySet<BingoBall> bingoSet = new ArraySet<BingoBall>();
+//		BingoBall ball;
+//		System.out.println("Four Bingo balls have been added.");
+//		
+//		for(int num=1; num <= NUM_BALLS; num++) { 
+//			ball = new BingoBall(num);
+//			System.out.println(ball);
+//			bingoSet.add(ball);
+//		}
+//
+//		System.out.println(bingoSet);
+//		System.out.println("Done!");
+//	}
+//}
 
 //application driver for code unit 15, test for the equals method.
 //======================================================

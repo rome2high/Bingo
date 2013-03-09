@@ -133,7 +133,14 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	//Code Unit 13: in this code unit, you are going to supply two pieces of code:
 	//iterator method that is inside the ArraySet class and the external class ArrayIterator.
 	public Iterator<T>  iterator() {
-		return null;
+		//ArraySet<BingoBall> bingoSet = new ArraySet<BingoBall>();
+		ArraySet<T> arSet = new ArraySet<T>();
+		
+		for (int i = 0; i < count; i++) {
+			arSet.add(contents[i]);
+		}
+		
+		return(new ArrayIterator<T>(arSet));
 	}
 
 	//print all the element in the object
