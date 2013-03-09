@@ -6,7 +6,7 @@ import  java.util.*;
 
 public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	private  static Random  rand= new Random();
-	private  final int DEFAULT_CAPACITY = 100;
+	private  final int DEFAULT_CAPACITY = 10;// 100;
 	private  final int NOT_FOUND = -1;
 	private  int count; // the current number of elements in the set
 	private  T[] contents;
@@ -52,7 +52,7 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	//Throws an EmptyCollectionException if the set is empty.
 	public T  removeRandom()  throws EmptyCollectionException {
 		if(isEmpty()) 
-			throw  new EmptyCollectionException(“Empty set”); 
+			throw  new EmptyCollectionException("Empty set"); 
 
 		int choice = rand.nextInt(count);
 		T result = contents[choice];
@@ -60,12 +60,6 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 		contents[count-1] = null;
 		count--;
 		return  result;
-	}
-
-	public class EmptyCollectionException extends  RuntimeException{
-		public EmptyCollectionException(String err) {
-			super(err);
-		}
 	}
 
 	//Code Unit 7: union method that returns a new set that is the union of this set and the parameter.
@@ -99,28 +93,46 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 		return (T[]) contents;
 	}
 	
-	//The remove operation removes the specified element from the set and returns it.
-	//This method will throw an EmptyCollectionException if the set is empty
-	//and a NoSuchElementException if the target element is not in the set.
+	
 	public T remove(T target) throws EmptyCollectionException, NoSuchElementException{
-		return (target);
+		//The remove operation removes the specified element from the set and returns it.
+		//This method will throw an EmptyCollectionException if the set is empty
+		//and a NoSuchElementException if the target element is not in the set.
+		//COMPLETED
+		if(isEmpty())
+			throw new EmptyCollectionException("Empty set");
+		
+		for(int i =0; i < count; i++)
+			if(((BingoBall)contents[i]).equals((BingoBall)  target))
+			{
+				T result = contents[i];
+				contents[i] = contents[count-1];  //fill the gap
+				contents[count-1] = null;
+				count--;
+				return result;
+			}
+		
+		return target;
 	}
 	
-	//Code Unit 11: size method returns an integer that indicating the
-	//number of actual elements in the array. This is a simple method.
+	
 	public int size() {
-		return 1;
+		//Code Unit 11: size method returns an integer that indicating the
+		//number of actual elements in the array. This is a simple method.
+		//COMPLETED
+		return count;
 	}
 	
-	//Code Unit 12: isEmpty method returns a boolean value
-	//that indicates whether the set is empty or not.  This is also a simple method
 	public boolean  isEmpty() {
-		return true;
+		//Code Unit 12: isEmpty method returns a boolean value
+		//that indicates whether the set is empty or not.  This is also a simple method
+		//COMPLETED
+		return (count <= 0);
 	}
 	
 	//Code Unit 13: in this code unit, you are going to supply two pieces of code:
 	//iterator method that is inside the ArraySet class and the external class ArrayIterator.
-	public Iterator<T>  iterator(){
+	public Iterator<T>  iterator() {
 		return null;
 	}
 
@@ -129,7 +141,17 @@ public class  ArraySet<T> implements SetADT<T>, Iterable<T> {
 	//retrun B 1, B 2, B 30,...
 	//using any loop but recommend iterator-while loop
 	public  String toString() {
-    	return ("");
+		System.out.println("The toString Method");
+		String oStr = "";
+		T[] balls = getContents();// new ArrayList<BingoBall>();
+		
+		for (int i = 0; i< count;  i++){
+			
+			System.out.print(contents[i]);
+			
+		}
+
+    	return (oStr);
     }
 
 	//Code Unit 15: in this code unit, you are going to

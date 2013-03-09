@@ -19,6 +19,7 @@ public class ArrayIterator <T> implements Iterator<T>{
 	public void remove(){
 		throw new UnsupportedOperationException("No remove implementation.");
 	}
+	
 }
 
 
